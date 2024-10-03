@@ -1,0 +1,23 @@
+	print("WelcometoPythonPizzaDeliveries!")
+	size=input("Whatsizepizzadoyouwant?S,MorL:")
+	pepperoni=input("Doyouwantpepperonionyourpizza?YorN:")
+	extra_cheese=input("Doyouwantextracheese?YorN:")
+	
+	bill=0
+	
+	ifsize=="S":
+	bill+=15
+	ifsize=="M":
+	bill+=20
+	ifsize=="L":
+	bill+=25
+	else:
+	print("ThatsnotasizeG")
+	ifpepperoni=="Y":
+	ifsize=="S":
+	bill+=2
+	else:
+	bill+=3
+	#Handlethecheese
+	ifextra_cheese=="Y":
+	bill+=1

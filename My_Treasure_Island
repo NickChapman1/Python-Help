@@ -1,0 +1,64 @@
+print('''
+*******************************************************************************
+          |                   |                  |                     |
+ _________|________________.=""_;=.______________|_____________________|_______
+|                   |  ,-"_,=""     `"=.|                  |
+|___________________|__"=._o`"-._        `"=.______________|___________________
+          |                `"=._o`"=._      _`"=._                     |
+ _________|_____________________:=._o "=._."_.-="'"=.__________________|_______
+|                   |    __.--" , ; `"=._o." ,-"""-._ ".   |
+|___________________|_._"  ,. .` ` `` ,  `"-._"-._   ". '__|___________________
+          |           |o`"=._` , "` `; .". ,  "-._"-._; ;              |
+ _________|___________| ;`-.o`"=._; ." ` '`."\ ` . "-._ /_______________|_______
+|                   | |o ;    `"-.o`"=._``  '` " ,__.--o;   |
+|___________________|_| ;     (#) `-.o `"=.`_.--"_o.-; ;___|___________________
+____/______/______/___|o;._    "      `".o|o_.--"    ;o;____/______/______/____
+/______/______/______/_"=._o--._        ; | ;        ; ;/______/______/______/_
+____/______/______/______/__"=._o--._   ;o|o;     _._;o;____/______/______/____
+/______/______/______/______/____"=._o._; | ;_.--"o.--"_/______/______/______/_
+____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
+/______/______/______/______/______/______/______/______/______/______/_____ /
+*******************************************************************************
+''')
+
+print("Welcome to Treasure Island.")
+print('Your mission is to find the treasure & DATA.')
+Direction1 = input('Would you like to go forwards or '
+                   'moonwalk backwards? ENTER moonwalk or Forward ').lower()
+
+if Direction1 == "Moonwalk" or Direction1 == "moonwalk":
+    Direction2 = input('You\'ve stumbled safely upon a river, do you want to swim accross'
+                       'or travel around \n ENTER: \"Swim\" or \"Walk\"').lower()
+    if Direction2 == "swim":
+        print('The water whisks you away but you get thrown into a CHALLENGER II KAYAK'
+              ' with a single gold coin in it! The challenger takes you far '
+              'you\'ve see a waterfall ahead,\n do you ride it out or try to dismount? ')
+        Direction4 = (input("Enter Waterfall or Shore").lower())
+        if Direction4 == "waterfall":
+            print('Sorry you have fallen onto many many rocks,'
+                  'You were bounced off the challanger and thrown '
+                  'into a school of many many very angry Trout... GAMEOVER')
+        else:
+            print('You pulled the Kayak to shore, literally right up to the '
+                  'treasure! Well done, you now have the Kayak and the treasure')
+
+    else:
+        print('You just keep moving forward, you\'ve walked into the dessert\n '
+              'An oasis far far far far ahead but slightly off path,'
+              '\n do you turn go straight towards it or continue qoute on qoute on path?'
+              'Or sit there and meditate')
+        Direction3 = input("Enter: Oasis Or Trail").lower()
+        if Direction3 == "oasis":
+            print("Victory! You found a treasure in the mirage!")
+        elif Direction3 == "trail":
+            print("Sorry you walked right off a cliff somehow!")
+        elif Direction3 == "meditate":
+            print('Wise choice, close the laptop and relax'
+                  ' you have reached VICTORY in your own way ')
+        else:
+            print('Thats invalid, you have been repointed right to the PMCU'
+                  'office where a summer in office week with no AC awaits you...'
+                  'Well done, GG')
+
+else:
+    print("You walked yourself right into a gap ticket! GAMEOVER")

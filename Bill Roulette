@@ -1,0 +1,8 @@
+import random
+#could set this up to have the user input who alls at the table and save that as the list
+#a = int(input("How many people are splitting this bill"))
+my_num = random.randint(0,4)
+friends = ["Alice", "Bob", "Charlie", "David", "Emanuel"]
+
+print("The bill goes to " + friends[my_num])
+#friends[my_num]

@@ -1,3 +1,4 @@
+#Could also use print(random.choice(friends))   quite possibly this is the simplists
 import random
 #could set this up to have the user input who alls at the table and save that as the list
 #a = int(input("How many people are splitting this bill"))

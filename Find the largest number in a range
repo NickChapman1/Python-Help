@@ -1,0 +1,16 @@
+number = 0
+new_number = 0
+
+while number < 100:
+    number += 1
+    new_number += number
+    print (number)
+
+print (new_number)
+
+# Or could do
+
+total = 0
+for number in range (1, 101):
+    total += number
+print(total)

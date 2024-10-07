@@ -1,0 +1,16 @@
+import random
+import My_Chapman
+
+#random_integer = random.randint(2,12)
+#switching out the above random function with a further random
+random_number_0_to_1 = random.random() * 100
+print(random_number_0_to_1)
+
+random_num_float = random.uniform(1,10)
+print(random_num_float)
+
+if random_number_0_to_1 >= 50:
+    print("Heads")
+else:
+    print("Tails")
+#print(My_Chapman.my_favorite_number)

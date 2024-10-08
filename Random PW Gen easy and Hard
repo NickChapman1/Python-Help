@@ -50,7 +50,7 @@ for char in range(nr_symbols):
    new_password += random.choice(symbols)
 for char in range(nr_numbers):
    new_password += random.choice(numbers)
-
+print('new password b4 shuffle!:  ', (new_password))
 random.shuffle(new_password)
 password1 = ""
 for char in new_password:

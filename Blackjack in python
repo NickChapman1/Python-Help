@@ -1,0 +1,131 @@
+import random
+import art
+from os import remove
+
+def deal_card():
+    cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+    card = random.choice(cards)
+    return card
+
+def calculate_score(cards):
+    """"Currently will see if hand is 21, changes ace to 1 if over."""
+    if sum(cards) == 21 and len(cards) ==2:
+        return 0
+    if 11 in cards and sum(cards) > 21:
+        cards.remove(11)
+        cards.append(1)
+
+    return sum(cards)
+def compare_hands(u_score, c_score):
+    if u_score == c_score:
+        print(f"It's a tie. Dealer takes ties")
+        return "Draw /:"
+    elif c_score == 0:
+        return "Computer has BLACKJACK!"
+    elif u_score == 0:
+        return "You Win with a Blackjack!"
+    elif u_score > 21:
+        return print(f"You went over 21, gg. Cards were {u_score}")
+    elif c_score > 21:
+        return print(f"Computer bust with {c_score}, you win.")
+    elif u_score > c_score:
+        return "User has won GG"
+    else:
+        return print(f"Computer wins with {c_score} VIA {computer_cards}")
+
+def play_game():
+    print(art.logo)
+    user_cards = []
+    computer_cards = []
+    computer_score = -1 #Set it to -1 so it will be an error off default if it isn't repopulated.
+    user_score = -1
+    is_game_over = False
+
+    for _ in range(2): #This will make the run loop twice.
+        user_cards.append(deal_card())
+        computer_cards.append(deal_card())
+       #new_card = deal_card()
+       #user_cards.append(new_card) simplified below
+
+    while not is_game_over:
+        user_score = calculate_score(user_cards)
+        computer_score = calculate_score(computer_cards)
+        print(f"User Cards are{user_cards}, current score iza: {user_score} ")
+        print(f"Computer's first card is: {computer_cards[0]}")
+
+        if user_score == 0 or computer_score == 0 or user_score > 21:
+            is_game_over = True
+        else:
+            user_should_deal = input("type 'y' to get another card, type 'n' to pass: \n\n\n")
+            if user_should_deal == "y":
+                user_cards.append(deal_card())
+                # if user_score > 21 and user_score > computer_score:
+                #     print(f"User wins with a score of {user_score}")
+                # else:
+                #     print(f"Computer wins loser. With a score of {computer_score} and dez cards {computer_cards}")
+            else:
+                is_game_over = True
+                # if user_score > 21 and user_score > computer_score:
+                #     print(f"User wins with a score of {user_score}")
+                # else:
+                #     print(f"Computer wins loser. With a score of {computer_score} and dez cards {computer_cards}")
+
+    while computer_score != 0 and computer_score < 17: ##Computers logic for playing
+        computer_cards.append(deal_card())
+        computer_score = calculate_score(computer_cards)
+
+    print(f"Your final hand: {user_cards}, final score: {user_score}")
+    print(f"Computer's final hand: {computer_cards}, final score: {computer_score}")
+    print(compare_hands(user_score,computer_score))
+
+#Or could do
+while input ("Do you want to play a game of Jack? Tpye 'y' or 'n':  ") == "y":
+# play_again = input(print(f"Would you like to play Black jack? Enter y or n")).lower()
+# while play_again == "y":
+    print("\n" * 20)
+    play_game()
+
+
+
+#Original start below
+
+# import random
+# import art
+# 
+# card_type = ['Hearts', 'Diamond Jim', 'Clubs', 'Spades']
+# card_value = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King']
+# 
+# deck = [(c_type, value) for c_type in card_type for value in card_value]
+# 
+# Deck_dictionary = {
+# 
+# }
+# 
+# def card_values(value):
+#     if value[0] in ['Jack', 'Queen', 'King']:
+#         return 10
+#     elif value[0] == 'Ace':
+#         return 11
+#     else:
+#         return int(value[0])
+# #print(deck)
+# random.shuffle(deck)
+# #print(deck)
+# player_cards = [deck.pop(), deck.pop()]
+# Dealer_cards = [deck.pop(), deck.pop()]
+# 
+# 
+# print("Welcome to black jack")
+# print(f"Starting cards are {player_cards}")
+# Hit_or_Stay=input(print(f"Would you like to hit or stay? /n Enter y or n:"))
+# while True:
+#     player_score = sum(card_values(c_type) for c_type in player_cards)
+#     print(f"Your current score is {player_score}")
+#     Hit_or_Stay = input(print(f"Would you like to hit or stay? Enter True for Hit or False:"))
+#     if Hit_or_Stay == True:
+#         new_card = deck.pop()
+#         player_cards.append(new_card)
+# 
+# 
+# 
+# 

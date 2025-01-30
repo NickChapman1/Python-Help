@@ -125,7 +125,48 @@ while input ("Do you want to play a game of Jack? Tpye 'y' or 'n':  ") == "y":
 #     if Hit_or_Stay == True:
 #         new_card = deck.pop()
 #         player_cards.append(new_card)
+# _________________________________________________________________________________________
+# Really cool way to actually make and shuffle accurate 52 card deck
+# 
+# 
+# import random
+# import art
+# 
+# card_type = ['Hearts', 'Diamond Jim', 'Clubs', 'Spades']
+# card_value = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King']
+# 
+# deck = [(c_type, value) for c_type in card_type for value in card_value]
+# 
+# Deck_dictionary = {
+# 
+# }
+# 
+# def card_values(value):
+#     if value[0] in ['Jack', 'Queen', 'King']:
+#         return 10
+#     elif value[0] == 'Ace':
+#         return 11
+#     else:
+#         return int(value[0])
+# #print(deck)
+# random.shuffle(deck)
+# #print(deck)
+# player_cards = [deck.pop(), deck.pop()]
+# Dealer_cards = [deck.pop(), deck.pop()]
+# 
+# 
+# print("Welcome to black jack")
+# print(f"Starting cards are {player_cards}")
+# Hit_or_Stay=input(print(f"Would you like to hit or stay? /n Enter y or n:"))
+# while True:
+#     player_score = sum(card_values(c_type) for c_type in player_cards)
+#     print(f"Your current score is {player_score}")
+#     Hit_or_Stay = input(print(f"Would you like to hit or stay? Enter True for Hit or False:"))
+#     if Hit_or_Stay == True:
+#         new_card = deck.pop()
+#         player_cards.append(new_card)
 # 
 # 
 # 
 # 
+

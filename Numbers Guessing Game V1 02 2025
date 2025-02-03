@@ -1,0 +1,54 @@
+from mimetypes import guess_type
+import random
+import art
+
+def compare_nums(difficulty, computer_number_1, computer_number_2):
+    if difficulty == "easy":
+        print("Looking to play Easy huh?!\n")
+        print("I'm thinking of a number between 1 and 10.\n")
+        guess1 = int(input("Whats your guess?"))
+        if computer_number_1 == guess1:
+            print( "Thats the number! Great guess!\n")
+        elif computer_number_1 > guess1:
+             print("You're to low, guess higher!\n")
+        elif computer_number_1 < guess1:
+             print("You're to high, drop that number.\n")
+    else:
+        print("Looking to play Hard huh? You have 5 guesses!\n")
+        print("I'm thinking of a number between 1 and 100.\n")
+        guess_counter = 5
+        while guess_counter != 0:
+
+            guess2 = int(input("Whats your guess?"))
+            if guess2 == computer_number_2:
+                print(f"You got it exactly! Computers num was {computer_number_2}, yours {guess2}")
+                return "Winner!!!"
+            if guess2 > computer_number_2:
+                print(f"Guess lower than {guess2}")
+                print(f"You now have {guess_counter -1} Guess's left. Make them count")
+            if guess2 < computer_number_2:
+                print(f"Guess Higher than {guess2}")
+                print(f"You now have {guess_counter -1} Guess's left. Make them count")
+            #print(f"loops {guess2}")
+            guess_counter -= 1
+
+    return print("You couldn't geuss it in 5. You lose, loser.")
+
+
+
+
+number_for_game = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+number_for_game_hard = range(1, 101)
+
+computer_num = int(random.choice(number_for_game))
+computer_num2 = int(random.choice(number_for_game_hard))
+print(f"Welcome to the Number Guessing Game!\n")
+print(art.logo)
+difficulty_choice = input("Choose a difficulty. Type 'easy' or 'hard':\n")
+#print("I'm thinking of a number between 1 and 10.\n")
+#guess1 = int(input("Whats your guess?"))
+
+#compare_nums(guess=guess1,computer_number=computer_num)
+print(f"Computer number is {computer_num} & {computer_num2}")
+compare_nums(difficulty_choice,computer_num, computer_num2)
+

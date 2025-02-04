@@ -1,5 +1,5 @@
 import random
-import art
+import art #No changes test
 
 def compare_nums(difficulty, computer_number_1, computer_number_2):
     if difficulty == "easy":

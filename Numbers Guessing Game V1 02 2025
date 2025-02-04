@@ -1,24 +1,36 @@
-from mimetypes import guess_type
 import random
 import art
 
 def compare_nums(difficulty, computer_number_1, computer_number_2):
     if difficulty == "easy":
-        print("Looking to play Easy huh?!\n")
-        print("I'm thinking of a number between 1 and 10.\n")
-        guess1 = int(input("Whats your guess?"))
-        if computer_number_1 == guess1:
-            print( "Thats the number! Great guess!\n")
-        elif computer_number_1 > guess1:
-             print("You're to low, guess higher!\n")
-        elif computer_number_1 < guess1:
-             print("You're to high, drop that number.\n")
+        print(art.logo)
+        print("Looking to play Easy huh?! You have 10 guesses\n")
+        print("I'm thinking of a number between 0 and 100.\n")
+        #guess1 = int(input("What's your guess?"))
+        guess_counter_easy = 10
+        while guess_counter_easy != 0:
+            guess1 = int(input("What's your guess?"))
+            if computer_number_1 == guess1:
+                print( "Wow thats the number! Great guess!\n")
+                print(f"You did that in {guess_counter_easy} guess's GG")
+                return "You've Won"
+            elif computer_number_1 > guess1:
+                print("You're to low, guess higher!\n")
+                print(f"You now have {guess_counter_easy - 1} Guess's left. Make them count")
+            elif computer_number_1 < guess1:
+                print("You're to high, drop that number.\n")
+                print(f"You now have {guess_counter_easy - 1} Guess's left. Make them count")
+
+            guess_counter_easy -= 1
+
+        return print(f"\n\nYou couldn't geuss it in 10 that's way easier than Hard. You lose, loser. \nComputers number all along was {computer_number_1}")
+
     else:
+        print(art.logo)
         print("Looking to play Hard huh? You have 5 guesses!\n")
-        print("I'm thinking of a number between 1 and 100.\n")
+        print("I'm thinking of a number between 1 and 1111.\n")
         guess_counter = 5
         while guess_counter != 0:
-
             guess2 = int(input("Whats your guess?"))
             if guess2 == computer_number_2:
                 print(f"You got it exactly! Computers num was {computer_number_2}, yours {guess2}")
@@ -32,13 +44,13 @@ def compare_nums(difficulty, computer_number_1, computer_number_2):
             #print(f"loops {guess2}")
             guess_counter -= 1
 
-    return print("You couldn't geuss it in 5. You lose, loser.")
+        return print(f"\n\nYou couldn't geuss it in 5. You lose, loser. \nComputer number was {computer_number_2}")
 
 
 
-
-number_for_game = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-number_for_game_hard = range(1, 101)
+#number_for_game = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+number_for_game = range (0, 100)
+number_for_game_hard = range(1, 1111)
 
 computer_num = int(random.choice(number_for_game))
 computer_num2 = int(random.choice(number_for_game_hard))
@@ -49,6 +61,5 @@ difficulty_choice = input("Choose a difficulty. Type 'easy' or 'hard':\n")
 #guess1 = int(input("Whats your guess?"))
 
 #compare_nums(guess=guess1,computer_number=computer_num)
-print(f"Computer number is {computer_num} & {computer_num2}")
+#print(f"Computer number is {computer_num} & {computer_num2}") #Used for testing at a point.
 compare_nums(difficulty_choice,computer_num, computer_num2)
-

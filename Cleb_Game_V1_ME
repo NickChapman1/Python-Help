@@ -1,0 +1,101 @@
+#Make a program that passes celeberties and they have to say which is more popular
+#So make an index of celebs linked to likes key value I guess. It will keep going and add
+#to a cumlative score while the user  isn't wrong- adds 1 point, so internal variable
+#incrementation,
+#
+#Notes
+#Given two celebs with nots on name, what they do, where they are from.
+#WHo has more followers a or 'b' is how its worded
+#Maybe make a table with all celbs and have it randomly select from there,
+#Need to figure out how to store multiple charictaristics
+#from tabulate import tabulate
+import random
+import sys
+from idlelib.macosx import hideTkConsole
+from pip._internal.utils.misc import tabulate
+
+
+def compare_user_choice(user_scores, user_choice, Winner, personss):
+    #Make something that will compare the two options 3rd index, save the winner in a variable and then compare that to the user guess.
+
+    print(f"user choice is {persons}, winner is {Winner}, Winning person is {personss}")
+    if user_choice == Winner:
+        print(f"User was right, with the choice of {personss}")
+        continue1 = True
+        return continue1
+    else:
+        #print(f"User was wrong, game over! It was {personss}")
+        #user_scores = 0
+        print(f"\nUsers lost with a score of {user_scores-1}")
+        sys.exit("Game over Homie")
+        return
+
+def find_winner(cleb1, cleb2):
+    if cleb1 == cleb2:
+        print(f"System selected a duplicate, try agian.")
+        cleb1 = random.choice(celeberty_table)
+        find_winner(cleb1, cleb2)
+        #sys.exit("GG")
+        #random_row = random.choice(celeberty_table)
+
+    elif cleb1 >= cleb2:
+        winner = cleb1
+        #print(f"it was cleb 1 with{cleb1}")
+        return winner
+    else:
+        winner = cleb2
+        #print("You're wrong")
+        return winner
+
+
+headers = ['Job', 'Home', 'Name', 'Rizz']
+
+celeberty_table = [
+    ['Musician', 'Texas', 'Jack_Johnson', 10000],
+   ['Baller', 'Illinois', 'Shack', 9000],
+    ['Driver', 'Burbank', 'Jack Black', 9005],
+    ['Baker', 'Wisconsin', 'Pauly D', 90],
+    ['hooper', 'Indiana', 'Harvey dent', 9003],
+    ['Chef', 'Hometown Chicago', 'Shackieol oneal', 900],
+    ['Chemist', 'Cali', 'Patrick', 90000],
+    ['Robot', 'Space', 'Mark Zuck', 80000]
+]
+
+table1 = tabulate(celeberty_table)
+numbers_index_table = range (0, 4)
+#options = random.choice(celeberty_table)
+#choice_1 = celeberty_table.[random.]
+user_choice_main = ""
+persons = ""
+#result = True
+#continue1 = True
+user_score = 0
+
+while user_score >= 0:
+    random_row = random.choice(celeberty_table)
+    random_row2 = random.choice(celeberty_table) #How can we make sure its not the same?
+    if random_row == random_row2:
+        random_row2 = random.choice(celeberty_table)
+    choice_ = celeberty_table[0]
+    print(5 * "\n")
+    print(f"options: Artist A: {random_row[0],random_row[1],random_row[2]} VS:\n {random_row2[0],random_row2[1],random_row2[2]}")
+    print(f"User score is {user_score}")
+    user_score += 1
+
+    user_choice_a_b = input("Who has more followers? Type 'A' or 'B'").lower()
+    if user_choice_a_b == 'a':
+        user_choice_main = random_row[3]
+        persons = random_row
+
+    elif user_choice_a_b == 'b':
+        user_choice_main = random_row2[3]
+        persons = random_row2
+
+    else:
+        print("Enter a real value Dufas")
+
+    winner = find_winner(random_row[3], random_row2[3])
+    result = compare_user_choice(user_score, user_choice_main, winner, persons)
+
+#print (f"Only 1 winner{winner}")
+#print(f"{user_choice_a_b} and {random_row2[3]}")

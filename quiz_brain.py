@@ -33,8 +33,8 @@ class QuizBrain:
     # self.random_question = random.choice(self.question_list[self.random_number])
        # print(f"{self.random_question}")
         #set user answer to input
-        user_answer = input(f"Current score {self.score}...you're on question #{self.question_number}..\n"
-                            f" \n{current_question.question} Is this true or false??").lower()
+        user_answer = input(f"Current score {self.score} out of {len(self.question_list)}...you're on question #{self.question_number}.."
+                            f" {current_question.question} Is this true or false??").lower()
         #call to the self check answer funtion and pass the user answer and current question.answer]
         self.check_answer(current_question.answer, user_answer)
         return
@@ -42,9 +42,11 @@ class QuizBrain:
     def check_answer(self, answer, user_answer):
         if answer.lower() != user_answer.lower():
             print(f"\nYou we're incorrect fool. You've now lost. You had a score of {self.score}\n")
-            exit()
+            print("\n" * 6)
+            #exit()
 
         else:
             self.score += 1
             print(f"\nBravo yous right! Well done, that puts your score at {self.score}")
-            self.next_question()
+            print("\n" * 6)
+            #self.next_question()

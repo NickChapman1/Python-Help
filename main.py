@@ -19,5 +19,7 @@ Quizbrain_constructor = QuizBrain(question_bank)
 while Quizbrain_constructor.is_still_question():
     Quizbrain_constructor.next_question()
 
+print(f"You've completed the game! Witha score of: {Quizbrain_constructor.score}")
+
 #bring up a question and ask user to answer it.
 # For all quiz functionality add in quiz brain

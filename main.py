@@ -1,25 +1,41 @@
-##make a question class that has text and answer as attributes. Needs to initalize each time. Then
-##constructor code will take those pieces of data and add them. use init method to initalize two attributs
-from quiz_brain import QuizBrain
-from data import question_data
-from question_model import Question
+#import Turtle_Methods
+#from Turtle_Methods import Turtlys
+#The turtle module will be know as t
+import turtle as t
 import random
-
-question_bank = []
-for question in question_data:
-    question_text = question["text"]
-    question_answer = question["answer"]
-    new_question = Question(question_text,question_answer) #call to question function in question_model
-    question_bank.append(new_question)
-
-#random.shuffle(question_bank)  #This makes it random!
-Quizbrain_constructor = QuizBrain(question_bank)
+import colorgram
 
 
-while Quizbrain_constructor.is_still_question():
-    Quizbrain_constructor.next_question()
+#New_Turtlys = Turtle_Methods.Turtlys
+colors = colorgram.extract('image.jpg', 6)
+first_color = colors[0]
+rgb = first_color.rgb
+hsl = first_color.hsl
+proportion = first_color.proportion
 
-print(f"You've completed the game! Witha score of: {Quizbrain_constructor.score}")
+tim = t.Turtle()
+t.colormode(255)
+tim.speed("fastest")
 
-#bring up a question and ask user to answer it.
-# For all quiz functionality add in quiz brain
+def random_color():
+    r = random.randint(0,255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    Tuple_test = (r,g,b)
+    return Tuple_test
+
+colours = ["tan", "deep pink", "dark magenta", "gold", "light sky blue", "slate gray", "lime"]
+directions = [0, 90, 180, 270]
+test_variable = 1
+
+def draw_spirograph(size_of_gap):
+    for _ in range(int(360 / size_of_gap)):
+        # tim.color(colors) #use with colorgram library
+        tim.color(random_color())
+        tim.circle(10)
+        tim.setheading(tim.heading() + size_of_gap)
+
+draw_spirograph(5)
+
+screen = t.Screen()
+screen.exitonclick()

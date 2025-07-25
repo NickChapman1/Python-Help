@@ -1,76 +1,59 @@
-import time
-from turtle import Turtle
-from random import random, randint
-from turtle import Screen
-from player import Player
-from car_manager import CarManager, Cars_build
-from scoreboard import Scoreboard
+import os
 
-screen = Screen()
-screen.setup(width=600, height=600)
-screen.tracer(0)
+names_path = "../__MACOSX/Mail Merge Project Start/Input/Names/._invited_names.txt"
+letter_template_path = "Input/Letters/starting_letter.txt"
+output_dir = "Output/ReadyToSend"
 
-car_manager = CarManager()
-frog_1 = Player()
-score_frog = Scoreboard()
-#car_creator = Cars_build()
+#make sure directory exists
+os.makedirs(output_dir, exist_ok=True)
 
-start_msg = score_frog.show_start_screen() #this shows the start screen
+#load in names
+with open(names_path, "r") as names_file:
+    names = [name.strip() for name in names_file.readlines()]
 
-# Key bindings Key bindings are part of the input system, and main.py
-# is where the game is orchestrated — so it’s the right place to wire up input to behavior.
-def handle_start():
-    global start_msg
-    if not score_frog.started_once:
-        score_frog.start_game()
-        frog_1.reset_frog()
-        car_manager.reset()
-        # if start_msg:
-        #     start_msg.clear()
+#load letter template
+with open(letter_template_path, "r") as letter_file:
+    letter_template = letter_file.read()
 
-def handle_restart():
-    if score_frog.started_once and not score_frog.is_running():
-        score_frog.restart_game()
-        frog_1.reset_frog()
-        car_manager.reset()
+#create personalized Letters
+for name in names:
+    personalized_letter = letter_template.replace("[name]", name)
+    output_path = os.path.join(output_dir, f"{name}_letter.txt")
+    with open(output_path, "w") as output_file:
+        output_file.write(personalized_letter)
 
-def handle_pause():
-    score_frog.pause_game()
 
-screen.listen()
-screen.onkey(frog_1.go_up, "Up")
-#screen.onkey(frog_1.go_down, "Down") #leaving just up functionality for now
-screen.onkey(handle_start, "space")
-screen.onkey(handle_restart, "r")
-screen.onkey(handle_pause, "p")
 
-game_is_on = True
-while game_is_on:
 
-    screen.update()
-    time.sleep(0.1)
+# TODO: Create a letter using starting_letter.txt
+# for each name in invited_names.txt
+# Replace the [name] placeholder with the actual name.
+# Save the letters in the folder "ReadyToSend".
 
-    if not score_frog.is_running() or score_frog.is_paused():
-        continue
+# Hint1: This method will help you: https://www.w3schools.com/python/ref_file_readlines.asp
+# Hint2: This method will also help you: https://www.w3schools.com/python/ref_string_replace.asp
+# Hint3: THis method will help you: https://www.w3schools.com/python/ref_string_strip.asp
 
-    car_manager.create_car()
-    car_manager.move_cars()
 
-    #COllisions checking
-    for car in car_manager.all_cars:
-        if car.distance(frog_1) < 20:
-            score_frog.game_over()
-            score_frog.show_restart_screen()
-            break
-            #game_is_on = False
-    #detect finish line
-    if frog_1.reached_finish_line():
-        frog_1.reset_frog()
-        car_manager.increase_speed()
-        score_frog.increase_level()
-        #score_frog.update_score()# this gets hit with the call to increase level
+# def load_content():
+#     #path = os.p ath.join(BASE_DIR, HIGH_SCORE_FILE)
+#     path = ""
+#     if os.path.exists(path):
+#         with open(path, "r") as file:
+#             content = file.read()
+#             return content
+#
+# names = load_content()
+# print(load_content())
+# #Yeah load letter or the names, put it into a variable. Then do a write to
+# #letter and input it into the other letter.
+#
+# def merge_letter_content():
+#     path = os.path.join()
+#     with open(f"{path}", "w") as file: #"a" wouldve been for append.
+#         for name in names:
+#             file.write(str())
 
-screen.exitonclick()
-    # if frog_1.distance() < 15:
-    #     print("GG GAMEOVER")
-    #     game_is_on = False
+#C:\Users\nchapman\PycharmProjects\day_24\Mail+Merge+Project+Start\__MACOSX\Mail Merge Project Start\Input\Names
+#f = open("../__MACOSX/Mail Merge Project Start/Input/Names/._invited_names.txt")
+#print(f.readlines())

@@ -1,17 +1,11 @@
-##################### Normal Starting Project ######################
-
-# 1. Update the birthdays.csv with your friends & family's details. 
-# HINT: Make sure one of the entries matches today's date for testing purposes. e.g.
-#name,email,year,month,day
-#YourName,your_own@email.com,today_year,today_month,today_day
-
+##################### Normal Starting Project #####################
 import smtplib
 import datetime as dt
 import pandas as pd
 import random
 
-my_email = "dev.dev.nc.25@gmail.com"
-password = "htjddvysxgpagwak"
+my_email = "Your email"
+password = "Your pw"
 
 
 # 2. Check if today matches a birthday in the birthdays.csv

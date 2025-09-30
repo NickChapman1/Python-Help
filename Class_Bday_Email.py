@@ -4,8 +4,8 @@ from datetime import datetime
 
 import pandas
 
-my_email = "dev.dev.nc.25@gmail.com"
-password = "htjddvysxgpagwak"
+my_email = "Your Email"
+password = "Your Password"
 today = datetime.now()
 today_tuple = (today.month, today.day)
 
@@ -29,4 +29,5 @@ if today_tuple in birthday_dict:
             from_addr=my_email,
             to_addrs=birthday_person["email"],
             msg=f"Subject:Happy birthday!\n\n{contents}"
+
         )

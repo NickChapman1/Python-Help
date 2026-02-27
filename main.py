@@ -1,41 +1,59 @@
-#import Turtle_Methods
-#from Turtle_Methods import Turtlys
-#The turtle module will be know as t
-import turtle as t
-import random
-import colorgram
+import os
+
+names_path = "../__MACOSX/Mail Merge Project Start/Input/Names/._invited_names.txt"
+letter_template_path = "Input/Letters/starting_letter.txt"
+output_dir = "Output/ReadyToSend"
+
+#make sure directory exists
+os.makedirs(output_dir, exist_ok=True)
+
+#load in names
+with open(names_path, "r") as names_file:
+    names = [name.strip() for name in names_file.readlines()]
+
+#load letter template
+with open(letter_template_path, "r") as letter_file:
+    letter_template = letter_file.read()
+
+#create personalized Letters
+for name in names:
+    personalized_letter = letter_template.replace("[name]", name)
+    output_path = os.path.join(output_dir, f"{name}_letter.txt")
+    with open(output_path, "w") as output_file:
+        output_file.write(personalized_letter)
 
 
-#New_Turtlys = Turtle_Methods.Turtlys
-colors = colorgram.extract('image.jpg', 6)
-first_color = colors[0]
-rgb = first_color.rgb
-hsl = first_color.hsl
-proportion = first_color.proportion
 
-tim = t.Turtle()
-t.colormode(255)
-tim.speed("fastest")
 
-def random_color():
-    r = random.randint(0,255)
-    g = random.randint(0, 255)
-    b = random.randint(0, 255)
-    Tuple_test = (r,g,b)
-    return Tuple_test
+# TODO: Create a letter using starting_letter.txt
+# for each name in invited_names.txt
+# Replace the [name] placeholder with the actual name.
+# Save the letters in the folder "ReadyToSend".
 
-colours = ["tan", "deep pink", "dark magenta", "gold", "light sky blue", "slate gray", "lime"]
-directions = [0, 90, 180, 270]
-test_variable = 1
+# Hint1: This method will help you: https://www.w3schools.com/python/ref_file_readlines.asp
+# Hint2: This method will also help you: https://www.w3schools.com/python/ref_string_replace.asp
+# Hint3: THis method will help you: https://www.w3schools.com/python/ref_string_strip.asp
 
-def draw_spirograph(size_of_gap):
-    for _ in range(int(360 / size_of_gap)):
-        # tim.color(colors) #use with colorgram library
-        tim.color(random_color())
-        tim.circle(10)
-        tim.setheading(tim.heading() + size_of_gap)
 
-draw_spirograph(5)
+# def load_content():
+#     #path = os.p ath.join(BASE_DIR, HIGH_SCORE_FILE)
+#     path = ""
+#     if os.path.exists(path):
+#         with open(path, "r") as file:
+#             content = file.read()
+#             return content
+#
+# names = load_content()
+# print(load_content())
+# #Yeah load letter or the names, put it into a variable. Then do a write to
+# #letter and input it into the other letter.
+#
+# def merge_letter_content():
+#     path = os.path.join()
+#     with open(f"{path}", "w") as file: #"a" wouldve been for append.
+#         for name in names:
+#             file.write(str())
 
-screen = t.Screen()
-screen.exitonclick()
+#C:\Users\nchapman\PycharmProjects\day_24\Mail+Merge+Project+Start\__MACOSX\Mail Merge Project Start\Input\Names
+#f = open("../__MACOSX/Mail Merge Project Start/Input/Names/._invited_names.txt")
+#print(f.readlines())
